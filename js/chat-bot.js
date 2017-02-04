@@ -14,31 +14,43 @@ function chatBot() {
 	 * @return reply of chat-bot
 	 */
 	this.respondTo = function(input) {
-	
+		
 		this.input = input.toLowerCase();
-		
-		if(this.match('(hi|hello|hey|hola|howdy)(\\s|!|\\.|$)'))
-			return "um... hi?";
-		
-		if(this.match('what[^ ]* up') || this.match('sup') || this.match('how are you'))
-			return "this github thing is pretty cool, huh?";
-		
-		if(this.match('l(ol)+') || this.match('(ha)+(h|$)') || this.match('lmao'))
-			return "what's so funny?";
-		
-		if(this.match('^no+(\\s|!|\\.|$)'))
-			return "don't be such a negative nancy :(";
-		
-		if(this.match('(cya|bye|see ya|ttyl|talk to you later)'))
-			return ["alright, see you around", "good teamwork!"];
-		
-		if(this.match('(dumb|stupid|is that all)'))
-			return ["hey i'm just a proof of concept", "you can make me smarter if you'd like"];
-		
-		if(this.input == 'noop')
-			return;
-		
-		return input + " what?";
+		var output, meows, i;
+		output = "";
+		meows = Math.floor(Math.random() * 4) + 1;
+		for (i = 0; i < meows; i++) {
+			switch (Math.floor(Math.random() * 5)) {
+				case 0:
+					output += "meow";
+					break;
+				case 1:
+					output += "maw";
+					break;
+				case 2:
+					output += "purr";
+					break;
+				case 3:
+					output += "meow-meow";
+					break;
+				case 4:
+					output += "maw-maw";
+					break;
+			}
+			switch (Math.floor(Math.random() * 10)) {
+				case 0:
+					output += "?";
+					break;
+				case 2:
+					output += "!";
+					break;
+				case 4:
+					output += "...";
+					break;
+			}
+			if ((meows > 1) && (i != meows)) { output += " "; }
+		}
+		return output;
 	}
 	
 	/**
